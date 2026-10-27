@@ -1,25 +1,26 @@
-package src.cuenta_letras_al_vector;
+package src.comprando_agua;
 
 import java.util.Scanner;
-/**
-* Problema: cuenta_letras_al_vector
-* Autor: Juan Eduardo González Hernández 
+/*
+* Problema: comprando_agua
+* Autor: Juan Eduardo González Hernández
 * Grupo: GTID244
 * Fecha: 26/10/2026
-* Descripción: Daremos una solucion para que reciba una palabra de entrada y el programa cuente cuantas
-veces se repite cada letra del avecedario.
+* Descripción: Recibe el número de marcas y sus precios, y muestra el menor.
 */
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in); // El scanner que leerá la palabra
-        String s = sc.hasNextLine() ? sc.nextLine().trim() : ""; // por si la cadena está vacía
+        Scanner sc = new Scanner(System.in);
+        int n = sc.hasNextInt() ? sc.nextInt() : 0; // cantidad de marcas
 
-        ListaLetras lista = new ListaLetras();
+        ListaPrecios lista = new ListaPrecios();
 
-        for (int i = 0; i < s.length(); i++) {
-            lista.contar(s.charAt(i));
+        for (int i = 0; i < n && sc.hasNextInt(); i++) {
+            lista.insertar(sc.nextInt());
         }
 
-        System.out.print(lista.resultado());
+        if (!lista.estaVacia()) {
+            System.out.println(lista.menor());
+        }
     }
 }
